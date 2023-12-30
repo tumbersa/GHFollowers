@@ -21,6 +21,9 @@
 		A4F6BF512B409B1800F8E1BD /* GFAlertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F6BF502B409B1800F8E1BD /* GFAlertVC.swift */; };
 		A4F6BF532B40A17D00F8E1BD /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F6BF522B40A17D00F8E1BD /* UIViewController+Extension.swift */; };
 		A4F6BF552B40A59D00F8E1BD /* GFContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F6BF542B40A59D00F8E1BD /* GFContainerView.swift */; };
+		A4F6BF5C2B40B51700F8E1BD /* Follower.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F6BF5B2B40B51700F8E1BD /* Follower.swift */; };
+		A4F6BF5E2B40B60100F8E1BD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F6BF5D2B40B60100F8E1BD /* User.swift */; };
+		A4F6BF612B40BA6E00F8E1BD /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F6BF602B40BA6E00F8E1BD /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +43,9 @@
 		A4F6BF502B409B1800F8E1BD /* GFAlertVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFAlertVC.swift; sourceTree = "<group>"; };
 		A4F6BF522B40A17D00F8E1BD /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		A4F6BF542B40A59D00F8E1BD /* GFContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFContainerView.swift; sourceTree = "<group>"; };
+		A4F6BF5B2B40B51700F8E1BD /* Follower.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Follower.swift; sourceTree = "<group>"; };
+		A4F6BF5D2B40B60100F8E1BD /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		A4F6BF602B40BA6E00F8E1BD /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,23 +78,74 @@
 		A44013932B3F7E11000FD100 /* GHFollowers */ = {
 			isa = PBXGroup;
 			children = (
-				A44013942B3F7E11000FD100 /* AppDelegate.swift */,
-				A44013962B3F7E11000FD100 /* SceneDelegate.swift */,
-				A44013AA2B3F863B000FD100 /* FavoritesListVC.swift */,
-				A488773C2B400461003AA54A /* FollowerListVC.swift */,
-				A44013982B3F7E11000FD100 /* SearchVC.swift */,
-				A440139D2B3F7E12000FD100 /* Assets.xcassets */,
-				A440139F2B3F7E12000FD100 /* LaunchScreen.storyboard */,
+				A4F6BF5F2B40BA4D00F8E1BD /* Managers */,
+				A4F6BF562B40AB7900F8E1BD /* Screens */,
+				A4F6BF5A2B40B4B600F8E1BD /* Model */,
+				A4F6BF572B40ABC800F8E1BD /* Custom Views */,
+				A4F6BF582B40AC1400F8E1BD /* Extensions */,
+				A4F6BF592B40AC8B00F8E1BD /* Support */,
 				A44013A22B3F7E12000FD100 /* Info.plist */,
+			);
+			path = GHFollowers;
+			sourceTree = "<group>";
+		};
+		A4F6BF562B40AB7900F8E1BD /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				A44013982B3F7E11000FD100 /* SearchVC.swift */,
+				A488773C2B400461003AA54A /* FollowerListVC.swift */,
+				A44013AA2B3F863B000FD100 /* FavoritesListVC.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		A4F6BF572B40ABC800F8E1BD /* Custom Views */ = {
+			isa = PBXGroup;
+			children = (
 				A44013AC2B3F8B9E000FD100 /* GFButton.swift */,
 				A44013AE2B3F9069000FD100 /* GFTextField.swift */,
 				A4F6BF4C2B40989100F8E1BD /* GFTitleLabel.swift */,
 				A4F6BF4E2B409A2900F8E1BD /* GFBodyLabel.swift */,
-				A4F6BF502B409B1800F8E1BD /* GFAlertVC.swift */,
-				A4F6BF522B40A17D00F8E1BD /* UIViewController+Extension.swift */,
 				A4F6BF542B40A59D00F8E1BD /* GFContainerView.swift */,
+				A4F6BF502B409B1800F8E1BD /* GFAlertVC.swift */,
 			);
-			path = GHFollowers;
+			path = "Custom Views";
+			sourceTree = "<group>";
+		};
+		A4F6BF582B40AC1400F8E1BD /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A4F6BF522B40A17D00F8E1BD /* UIViewController+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		A4F6BF592B40AC8B00F8E1BD /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				A44013942B3F7E11000FD100 /* AppDelegate.swift */,
+				A44013962B3F7E11000FD100 /* SceneDelegate.swift */,
+				A440139D2B3F7E12000FD100 /* Assets.xcassets */,
+				A440139F2B3F7E12000FD100 /* LaunchScreen.storyboard */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		A4F6BF5A2B40B4B600F8E1BD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A4F6BF5B2B40B51700F8E1BD /* Follower.swift */,
+				A4F6BF5D2B40B60100F8E1BD /* User.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A4F6BF5F2B40BA4D00F8E1BD /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				A4F6BF602B40BA6E00F8E1BD /* NetworkManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -167,10 +224,13 @@
 				A4F6BF532B40A17D00F8E1BD /* UIViewController+Extension.swift in Sources */,
 				A44013992B3F7E11000FD100 /* SearchVC.swift in Sources */,
 				A4F6BF512B409B1800F8E1BD /* GFAlertVC.swift in Sources */,
+				A4F6BF5E2B40B60100F8E1BD /* User.swift in Sources */,
 				A4F6BF4F2B409A2900F8E1BD /* GFBodyLabel.swift in Sources */,
+				A4F6BF5C2B40B51700F8E1BD /* Follower.swift in Sources */,
 				A4F6BF4D2B40989100F8E1BD /* GFTitleLabel.swift in Sources */,
 				A488773D2B400461003AA54A /* FollowerListVC.swift in Sources */,
 				A44013952B3F7E11000FD100 /* AppDelegate.swift in Sources */,
+				A4F6BF612B40BA6E00F8E1BD /* NetworkManager.swift in Sources */,
 				A44013972B3F7E11000FD100 /* SceneDelegate.swift in Sources */,
 				A4F6BF552B40A59D00F8E1BD /* GFContainerView.swift in Sources */,
 			);
