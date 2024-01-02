@@ -25,6 +25,7 @@ class FollowerListVC: UIViewController {
         super.viewDidLoad()
         
         configureVC()
+        configureSearchController()
         configureCollectionView()
         getFollowers(username: username, page: page)
         configureDataSource()
@@ -33,6 +34,14 @@ class FollowerListVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        // Show the search bar when the view appears
+        navigationController?.navigationBar.sizeToFit()
+        navigationItem.hidesSearchBarWhenScrolling = true
     }
     
     func configureVC() {
@@ -49,7 +58,17 @@ class FollowerListVC: UIViewController {
         
     }
     
-   
+    func configureSearchController(){
+        let searchController                    = UISearchController()
+        searchController.searchResultsUpdater   = self
+        searchController.searchBar.placeholder  = "Search for a username"
+        navigationItem.searchController         = searchController
+        // Ensure the search bar remains visible at all times
+        navigationItem.hidesSearchBarWhenScrolling = false
+
+        // Ensure proper presentation context
+        definesPresentationContext = true
+    }
     
     func getFollowers(username: String, page: Int) {
         showLoadingView()
@@ -60,6 +79,13 @@ class FollowerListVC: UIViewController {
             case .success(let followers):
                 if followers.count < 100 { self.hasMoreFollowers = false }
                 self.followers.append(contentsOf: followers)
+                
+                if self.followers.isEmpty {
+                    let message = "This user doesn't have any followers. Go follow them 🙂"
+                    DispatchQueue.main.async {
+                        self.showEmptyStateView(with: message, in: self.view)
+                    }
+                }
                 self.updateData()
             case .failure(let error):
                 self.presentGFAlertOnMainThread(
@@ -102,6 +128,12 @@ extension FollowerListVC: UICollectionViewDelegate {
             page += 1
             getFollowers(username: username, page: page)
         }
+        
+    }
+}
+
+extension FollowerListVC: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
         
     }
 }
