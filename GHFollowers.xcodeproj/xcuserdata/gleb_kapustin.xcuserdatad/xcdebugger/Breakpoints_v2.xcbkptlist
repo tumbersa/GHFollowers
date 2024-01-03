@@ -3,4 +3,54 @@
    uuid = "78BFC312-D5BD-4C86-A72F-6D24EA62BE22"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "45989F56-64BE-4A84-88CE-8E72AC337ECF"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GHFollowers/Managers/NetworkManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "getFollowers(for:page:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "45989F56-64BE-4A84-88CE-8E72AC337ECF - f31fead9ec9f2e50"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in GHFollowers.NetworkManager.getFollowers(for: Swift.String, page: Swift.Int, completion: (Swift.Result&lt;Swift.Array&lt;GHFollowers.Follower&gt;, GHFollowers.GFError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "GHFollowers"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gleb_kapustin/XcodeProjects/GHFollowers/GHFollowers/Managers/NetworkManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "34"
+                  endingLineNumber = "34"
+                  offsetFromSymbolStart = "548">
+               </Location>
+               <Location
+                  uuid = "45989F56-64BE-4A84-88CE-8E72AC337ECF - f31fead9ec9f2e50"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in GHFollowers.NetworkManager.getFollowers(for: Swift.String, page: Swift.Int, completion: (Swift.Result&lt;Swift.Array&lt;GHFollowers.Follower&gt;, GHFollowers.GFError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "GHFollowers"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gleb_kapustin/XcodeProjects/GHFollowers/GHFollowers/Managers/NetworkManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "34"
+                  endingLineNumber = "34"
+                  offsetFromSymbolStart = "640">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

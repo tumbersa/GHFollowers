@@ -45,6 +45,9 @@ class FollowerListVC: UIViewController {
     func configureVC() {
         view.backgroundColor = .systemBackground
         navigationController?.navigationBar.prefersLargeTitles = true
+        
+        let addButoon = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonTapped))
+        navigationItem.rightBarButtonItem = addButoon
     }
     
     func configureCollectionView() {
@@ -108,6 +111,10 @@ class FollowerListVC: UIViewController {
             self.dataSource.apply(snapshot, animatingDifferences: true)
         }
     }
+    
+    @objc func addButtonTapped() {
+        
+    }
 }
 
 
@@ -162,8 +169,11 @@ extension FollowerListVC: FollowerListVCDelegate {
         page            = 1
         followers.removeAll()
         filteredFollowers.removeAll()
-        //collectionView.setContentOffset(.zero, animated: true)
-        collectionView.reloadData()
+        
+        view.layoutIfNeeded()
+        let offset = CGPoint(x: -collectionView.adjustedContentInset.left, 
+                             y: -collectionView.adjustedContentInset.top)
+        collectionView.setContentOffset(offset, animated: true)
         getFollowers(username: username, page: page)
     }
 }
