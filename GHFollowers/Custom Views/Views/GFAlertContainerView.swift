@@ -7,7 +7,7 @@
 
 import UIKit
 
-class GFContainerView: UIView {
+class GFAlertContainerView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -16,11 +16,6 @@ class GFContainerView: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    init() {
-        super.init(frame: .zero)
-        configure()
     }
     
     private func configure(){
