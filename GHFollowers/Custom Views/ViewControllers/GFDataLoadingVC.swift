@@ -11,7 +11,6 @@ class GFDataLoadingVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
 
     var containerView: UIView!
