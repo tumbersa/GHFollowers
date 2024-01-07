@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@available(iOS 16.0, *)
 struct FollowerView: View {
     
     var follower: Follower
@@ -18,7 +19,7 @@ struct FollowerView: View {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
             } placeholder: {
-                Image("avatar-placeholder")
+                Image(.avatarPlaceholder)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
             }
@@ -33,6 +34,7 @@ struct FollowerView: View {
     }
 }
 
+@available(iOS 16.0, *)
 #Preview {
     FollowerView(follower: Follower(login: "Gleb K", avatarUrl: ""))
 }

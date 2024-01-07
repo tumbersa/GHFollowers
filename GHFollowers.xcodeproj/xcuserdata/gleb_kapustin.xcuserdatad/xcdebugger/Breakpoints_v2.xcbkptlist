@@ -62,8 +62,8 @@
             filePath = "GHFollowers/Screens/FollowerListVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "236"
-            endingLineNumber = "236"
+            startingLineNumber = "256"
+            endingLineNumber = "256"
             landmarkName = "updateSearchResults(for:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -78,8 +78,8 @@
             filePath = "GHFollowers/Screens/FollowerListVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "216"
-            endingLineNumber = "216"
+            startingLineNumber = "236"
+            endingLineNumber = "236"
             landmarkName = "scrollViewDidEndDragging(_:willDecelerate:)"
             landmarkType = "7">
             <Locations>
@@ -126,8 +126,8 @@
             filePath = "GHFollowers/Screens/FollowerListVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "213"
-            endingLineNumber = "213"
+            startingLineNumber = "233"
+            endingLineNumber = "233"
             landmarkName = "scrollViewDidEndDragging(_:willDecelerate:)"
             landmarkType = "7">
             <Locations>

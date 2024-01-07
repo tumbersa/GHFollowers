@@ -96,3 +96,8 @@ extension SearchVC: UITextFieldDelegate {
         return true
     }
 }
+
+@available(iOS 17.0, *)
+#Preview{
+    SearchVC()
+}

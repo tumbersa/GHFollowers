@@ -71,6 +71,7 @@ class UserInfoVC: UIViewController {
                         isQueueUnused: false)
                 }
             }
+            return
         }
         
         Task {

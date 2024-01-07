@@ -49,3 +49,8 @@ class GFButton: UIButton {
         }
     }
 }
+@available(iOS 17.0, *)
+#Preview {
+    GFButton(color: .blue, title: "TestButton", systemImageName: "pencil")
+}
+

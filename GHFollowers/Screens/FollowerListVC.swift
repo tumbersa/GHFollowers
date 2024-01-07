@@ -50,6 +50,20 @@ class FollowerListVC: GFDataLoadingVC {
         navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
+    @available(iOS 17.0, *)
+    override func updateContentUnavailableConfiguration(using state: UIContentUnavailableConfigurationState) {
+        if followers.isEmpty && !isLoadingMoreFollowers {
+            var config = UIContentUnavailableConfiguration.empty()
+            config.image            = .init(systemName: "person.slash")
+            config.text             = "No followers"
+            config.secondaryText    = "This user has no followers"
+            contentUnavailableConfiguration = config
+        } else if isSearching && filteredFollowers.isEmpty {
+            contentUnavailableConfiguration = UIContentUnavailableConfiguration.search()
+        } else {
+            contentUnavailableConfiguration = nil
+        }
+    }
     
     func configureVC() {
         view.backgroundColor = .systemBackground
@@ -126,12 +140,17 @@ class FollowerListVC: GFDataLoadingVC {
         if followers.count < 100 { self.hasMoreFollowers = false }
         self.followers.append(contentsOf: followers)
         
-        if self.followers.isEmpty {
-            let message = "This user doesn't have any followers. Go follow them 🙂"
-            DispatchQueue.main.async {
-                self.showEmptyStateView(with: message, in: self.view)
+        if #available(iOS 17.0, *) {
+            setNeedsUpdateContentUnavailableConfiguration()
+        } else {
+            if self.followers.isEmpty {
+                let message = "This user doesn't have any followers. Go follow them 🙂"
+                DispatchQueue.main.async {
+                    self.showEmptyStateView(with: message, in: self.view)
+                }
             }
         }
+        
         self.updateData(on: self.followers)
     }
     
@@ -168,6 +187,7 @@ class FollowerListVC: GFDataLoadingVC {
                     self.presentGFAlert(title: "Something went wrong", message: error.rawValue, buttonTitle: "Ok", isQueueUnused: false)
                 }
             }
+            return
         }
         
         Task {
@@ -246,6 +266,9 @@ extension FollowerListVC: UISearchResultsUpdating {
             $0.login.lowercased().contains(filter.lowercased())
         })
         updateData(on: filteredFollowers)
+        if #available(iOS 17.0, *) {
+            setNeedsUpdateContentUnavailableConfiguration()
+        }
     }
 }
 
@@ -261,3 +284,4 @@ extension FollowerListVC: UserInfoVCDelegate {
         getFollowers(username: username, page: page)
     }
 }
+
