@@ -14,7 +14,6 @@ class GFTabBarController: UITabBarController {
 
         UITabBar.appearance().tintColor = .systemGreen
         viewControllers = [createSearchNC(), createFavoritesNC()]
-        tabBar.backgroundColor = UIColor.systemGray6
     }
 
     func createSearchNC() -> UINavigationController {
