@@ -9,9 +9,13 @@ import Foundation
 
 extension Date {
     func converteToMonthYearFormat() -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MMM yyyy"
-        return dateFormatter.string(from: self)
+        guard #available(iOS 15.0, *) else {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MMM yyyy"
+            return dateFormatter.string(from: self)
+        }
+        
+        return formatted(.dateTime.month(.wide).year())
     }
 }
 

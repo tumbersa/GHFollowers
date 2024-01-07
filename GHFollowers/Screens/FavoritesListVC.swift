@@ -97,9 +97,11 @@ extension FavoritesListVC: UITableViewDelegate {
         PersistenceManager.updateWith(favorite: favorites[indexPath.row], actionType: .remove) { [weak self] error in
             guard let self else { return }
             guard let error else {
-                
                 self.favorites.remove(at: indexPath.row)
                 self.tableView.deleteRows(at: [indexPath], with: .left)
+                if self.favorites.isEmpty {
+                    self.showEmptyStateView(with: "No Favorites?\nAdd one on the follower screen", in: self.view)
+                }
                 return
             }
             
