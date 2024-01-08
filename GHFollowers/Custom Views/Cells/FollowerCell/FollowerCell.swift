@@ -24,6 +24,10 @@ class FollowerCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        avatarImageView.kf.cancelDownloadTask()
+    }
     
     func set(follower: Follower) {
         if #available(iOS 16.0, *) {
@@ -31,13 +35,15 @@ class FollowerCell: UICollectionViewCell {
                 FollowerView(follower: follower)
             }
         } else {
-            avatarImageView.downloadImage(fromURL: follower.avatarUrl)
-            usernameLabel.text = follower.login
-        }
+            avatarImageView.image = nil
+        avatarImageView.kf.setImage(with: URL(string: follower.avatarUrl))
+        usernameLabel.text = follower.login
+    }
     }
     
     private func configure() {
         addSubviews(avatarImageView, usernameLabel)
+        avatarImageView.image = Images.placeholder
         let padding: CGFloat = 8
         
         if #available(iOS 15.0, *) {

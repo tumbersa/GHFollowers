@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class FavoritesListVC: GFDataLoadingVC {
     
@@ -98,8 +99,13 @@ extension FavoritesListVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: FavoriteCell.reuseID) as! FavoriteCell
         let favorite = favorites[indexPath.row]
-        cell.set(favorite: favorite)
-
+        cell.usernameLabel.text = favorite.login
+        cell.avatarImageView.kf.setImage(with: URL(string: favorite.avatarUrl)) { [weak self] _ in
+            guard let self else { return }
+            self.tableView.reloadRows(at: [indexPath], with: .automatic)
+        }
+        
+        
         return cell
     }
 }

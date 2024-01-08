@@ -159,7 +159,9 @@ class FollowerListVC: GFDataLoadingVC {
             collectionView: collectionView,
             cellProvider: { (collectionView, indexPath, follower) -> UICollectionViewCell? in
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FollowerCell.reuseID, for: indexPath) as! FollowerCell
+                
                 cell.set(follower: follower)
+                
                 return cell
         })
     }

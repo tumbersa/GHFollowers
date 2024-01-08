@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 @available(iOS 16.0, *)
 struct FollowerView: View {
@@ -14,15 +15,15 @@ struct FollowerView: View {
     
     var body: some View {
         VStack {
-            AsyncImage(url: URL(string: follower.avatarUrl)) { image in
-                image
+            KFImage(URL(string: follower.avatarUrl))
+                .placeholder({ _ in
+                    Image(.avatarPlaceholder)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-            } placeholder: {
-                Image(.avatarPlaceholder)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-            }
+                    
+                })
+                .resizable()
+                .aspectRatio(contentMode: .fit)
             .clipShape(.circle)
             
             Text(follower.login)

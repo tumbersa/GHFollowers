@@ -11,7 +11,6 @@ class NetworkManager {
     
     static let shared   = NetworkManager()
     private let baseUrl = "https://api.github.com/users/"
-    let cache           = NSCache<NSString, UIImage>()
     let decoder         = JSONDecoder()
     
     private init() {
@@ -144,52 +143,5 @@ class NetworkManager {
         }
     }
     
-    @available(iOS 13.0, *)
-    func downloadImage(from urlString: String, complition: @escaping (UIImage?) -> Void) {
-        let cacheKey = NSString(string: urlString)
-        
-        if let image = cache.object(forKey: cacheKey) {
-            complition(image)
-            return
-        }
-        
-        guard let url = URL(string: urlString) else {
-            complition(nil)
-            return
-        }
-        
-        let task = URLSession.shared.dataTask(with: url) {[weak self] data, responce, error in
-            guard let self, 
-                error == nil,
-                let responce = responce as? HTTPURLResponse,
-                responce.statusCode == 200,
-                let data,
-                let image = UIImage(data: data) else {
-                complition(nil)
-                return
-            }
-            
-            self.cache.setObject(image, forKey: cacheKey)
-            
-            complition(image)
-        }
-        task.resume()
-    }
     
-    @available(iOS 15.0, *)
-    func downloadImage(from urlString: String) async -> UIImage? {
-        let cacheKey = NSString(string: urlString)
-        
-        if let image = cache.object(forKey: cacheKey) { return image }
-        guard let url = URL(string: urlString) else { return nil }
-        
-        do {
-            let (data, _) = try await URLSession.shared.data(from: url)
-            guard let image = UIImage(data: data) else { return nil }
-            self.cache.setObject(image, forKey: cacheKey)
-            return image
-        } catch {
-            return nil
-        }
-    }
 }

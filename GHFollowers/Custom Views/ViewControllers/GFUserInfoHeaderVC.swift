@@ -36,7 +36,7 @@ class GFUserInfoHeaderVC: UIViewController {
     }
     
     func configureUIElements(){
-        avatarImageView.downloadImage(fromURL: user.avatarUrl)
+        avatarImageView.kf.setImage(with: URL(string: user.avatarUrl))  
         usernameLabel.text          = user.login
         nameLabel.text              = user.name ?? "No name"
         locationLabel.text          = user.location ?? "No location"

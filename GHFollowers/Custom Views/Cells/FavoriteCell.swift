@@ -23,7 +23,10 @@ class FavoriteCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        avatarImageView.kf.cancelDownloadTask()
+    }
     
     private func configure() {
         addSubviews(avatarImageView, usernameLabel)
@@ -44,8 +47,5 @@ class FavoriteCell: UITableViewCell {
         ])
     }
     
-    func set(favorite: Follower) {
-        usernameLabel.text = favorite.login
-        avatarImageView.downloadImage(fromURL: favorite.avatarUrl)
-    }
+   
 }

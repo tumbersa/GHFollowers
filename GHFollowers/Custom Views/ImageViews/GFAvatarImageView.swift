@@ -9,7 +9,7 @@ import UIKit
 
 class GFAvatarImageView: UIImageView {
     let placeholderImage = Images.placeholder
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
@@ -26,18 +26,6 @@ class GFAvatarImageView: UIImageView {
         translatesAutoresizingMaskIntoConstraints = false
     }
     
-    func downloadImage(fromURL url: String) {
-        guard #available(iOS 15.0, *) else {
-            NetworkManager.shared.downloadImage(from: url) {[weak self] image in
-                guard let self else { return }
-                DispatchQueue.main.async { self.image = image }
-            }
-            return
-        }
-        
-        Task {
-            image = await NetworkManager.shared.downloadImage(from: url) ?? placeholderImage
-        }
-    }
+   
 
 }
